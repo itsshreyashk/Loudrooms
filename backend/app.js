@@ -26,26 +26,20 @@ app.use(cors({
 app.get('/', (req, res) => {
     res.send("Hi!")
 });
-// Set up a connection event for Socket.IO
+
 io.on('connection', (socket) => {
-    console.log('A user connected');
-    // Handle disconnection
-    socket.on('joinRoom', (roomcode) => {
-        socket.join(roomcode);
-        console.log(`User joined ${roomcode}`);
-        socket.on('sendMessage', (data) => {
-            console.log(data);
-            // Assuming roomcode is part of the data you send from the client
-            const { roomcode } = data;
-            console.log(roomcode);
-            io.to(roomcode).emit('message', data);
-        });
-        
-    })
-    socket.on('disconnect', () => {
-        console.log('User disconnected');
+    console.log("User connected...");
+    socket.on('joinRoom', (data) => {
+        socket.join(data.roomcode);
+        console.log(`${data.username} joined room ${data.roomcode}`);
     });
-});
+    socket.on('emitMessage', (data) => {
+        console.log(data);
+        io.to(data.roomcode).emit('message', data);
+    });
+})
+
+
 // Start the server on port 3000
 server.listen(PORT, () => {
     console.log(`Server listening on ${PORT}`);
