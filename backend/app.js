@@ -19,7 +19,7 @@ const io = new Server(server);
 
 //middleware
 app.use(cors({
-    origin : "http://localhost:3000",
+    origin: "http://localhost:3000",
 }))
 
 
@@ -28,13 +28,13 @@ app.get('/', (req, res) => {
 });
 // Set up a connection event for Socket.IO
 io.on('connection', (socket) => {
-  console.log('A user connected');
-  // Handle disconnection
-  socket.on('disconnect', () => {
-    console.log('User disconnected');
-  });
+    console.log('A user connected');
+    // Handle disconnection
+    socket.on('disconnect', () => {
+        console.log('User disconnected');
+    });
 });
 // Start the server on port 3000
 server.listen(PORT, () => {
-  console.log(`Server listening on ${PORT}`);
+    console.log(`Server listening on ${PORT}`);
 });
