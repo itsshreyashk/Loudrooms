@@ -13,6 +13,8 @@ export default function Room() {
     const Props = {
         roomcode: `${roomcode}`,
     }
+
+    document.title = `Loud#${roomcode}`;
     // Declare socket and emitMsg outside of useEffect
     const socket = io('http://localhost:3001', {
         transports: ['websocket'],

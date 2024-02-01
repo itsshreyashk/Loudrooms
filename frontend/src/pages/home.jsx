@@ -4,14 +4,18 @@ import Nav from '../warehouse/nav';
 export default function Home() {
     document.title = "Home";
 
-
     const codeRef = useRef(null);
     const connectRef = useRef(null);
     const usnmRef = useRef(null);
 
     const [username, setName] = useState('User');
     function connectChat() {
-        window.location.href = `/chat/${codeRef.current.value}`;
+
+        if (codeRef.current.value != '') {
+            window.location.href = `/chat/${codeRef.current.value}`;
+        } else {
+            alert('Please Enter a valid code...')
+        }
     }
     function handleNameChange() {
         if (usnmRef.current) {
@@ -19,11 +23,6 @@ export default function Home() {
             localStorage.setItem('username', username)
         }
     }
-    useEffect(() => {
-        return () => {
-        }
-    }, [])
-
     return (
         <>
             <Nav />
