@@ -30,6 +30,18 @@ app.get('/', (req, res) => {
 io.on('connection', (socket) => {
     console.log('A user connected');
     // Handle disconnection
+    socket.on('joinRoom', (roomcode) => {
+        socket.join(roomcode);
+        console.log(`User joined ${roomcode}`);
+        socket.on('sendMessage', (data) => {
+            console.log(data);
+            // Assuming roomcode is part of the data you send from the client
+            const { roomcode } = data;
+            console.log(roomcode);
+            io.to(roomcode).emit('message', data);
+        });
+        
+    })
     socket.on('disconnect', () => {
         console.log('User disconnected');
     });

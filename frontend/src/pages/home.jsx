@@ -16,7 +16,7 @@ export default function Home() {
     function handleNameChange() {
         if (usnmRef.current) {
             setName(usnmRef.current.value);
-            console.log(username);
+            localStorage.setItem('username', username)
         }
     }
     useEffect(() => {
