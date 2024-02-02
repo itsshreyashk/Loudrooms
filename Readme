@@ -1,25 +1,4 @@
-# ChatRoom Chuckles Readme
+/code/:chat
 
-🎉 Welcome to ChatRoom Chuckles! Where coding meets comedy without any bugs! 🐜
 
-## What's the Deal?
-
-Looking for a chat app that's more entertaining than watching paint dry? Congrats, you found it! ChatRoom Chuckles is a quirky space where you chat, laugh, and maybe even cry tears of joy (we won't judge).
-
-## How to Get in on the Fun:
-
-1. **Unlock the Comedy Vault:** Sneak into a room using a secret code – it's like getting VIP access to a stand-up show, but virtual!
-
-2. **Joke Jedi Training:** Type your best jokes, puns, or those "dad jokes" you secretly love. Laughter is the key to the universe.
-
-3. **Abracadabra – It's Sent!:** Hit "Send" or press Enter – because laughter should never wait!
-
-## The Tech Wizardry:
-
-Crafted with React, Socket.io, and a sprinkle of digital fairy dust. This app's auto-scroll is so smooth, it's like a virtual rollercoaster for your messages.
-
-## Word of Warning:
-
-May induce spontaneous fits of laughter, increased emoji usage, and a sudden desire to become a stand-up comedian.
-
-Dive in, chat on, and laugh till your keyboard can't take it anymore! 😄🚀
+Make your room.
