@@ -28,7 +28,6 @@ export default function Room() {
             roomcode: roomcode,
         }
         socket.emit('emitMessage', data);
-        scrollToBottom();
     };
     function scrollToBottom() {
         chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
@@ -36,8 +35,9 @@ export default function Room() {
     useEffect(() => {
         console.log(roomcode);
         socket.on('message', (data) => {
-            setMsgs((prevMsgs) => [...prevMsgs, { ...data, time: new Date().toLocaleTimeString() }]);
-        })
+            setMsgs((prevMsgs) => [...prevMsgs, { ...data, time: new Date().toLocaleTimeString() }])
+            scrollToBottom();
+        });
 
         return () => {
         }
