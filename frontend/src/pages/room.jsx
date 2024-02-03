@@ -8,18 +8,16 @@ export default function Room() {
     const { roomcode } = useParams();
     const msgRef = useRef(null);
     const chatContainerRef = useRef(null);
+    const [users, setUsers] = useState([]);
     const [username, setUsername] = useState(localStorage.getItem('username'));
     const [allMsgs, setMsgs] = useState([]);
-    const Props = {
-        roomcode: `${roomcode}`,
-    }
 
     document.title = `Loud#${roomcode}`;
     // Declare socket and emitMsg outside of useEffect
     const socket = io('http://localhost:3001', {
         transports: ['websocket'],
     });
-
+    
     socket.emit('joinRoom', { roomcode, username });
     const emitMsg = (username, msg, roomcode, time) => {
         let data = {
@@ -38,6 +36,9 @@ export default function Room() {
             setMsgs((prevMsgs) => [...prevMsgs, { ...data, time: new Date().toLocaleTimeString() }])
             scrollToBottom();
         });
+        socket.on('roomJoinEvent', (data)=> {
+            setUsers((prevUsers)=> [...prevUsers, {username : `${data.username}`}])
+        })
 
         return () => {
         }
@@ -45,7 +46,7 @@ export default function Room() {
 
     return (
         <>
-            <Nav {...Props} />
+            <Nav roomcode={roomcode} users={users} setUsers={setUsers} />
             <div className="h-[90vh] bg-gray-100 pt-14 px-2 py-2 space-y-1 z-2 overflow-y-scroll" ref={chatContainerRef}>
                 {
                     allMsgs.map((element, index) => (

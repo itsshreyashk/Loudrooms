@@ -39,7 +39,9 @@ io.on('connection', (socket) => {
     // Joining the room of wonders 🚪
     socket.on('joinRoom', (data) => {
         socket.join(data.roomcode);
+
         console.log(`👥 ${data.username} joined the room ${data.roomcode}. Prepare for liftoff! 🚀`);
+        io.to(data.roomcode).emit('roomJoinEvent', data)
     });
 
     // Emitting messages to the universe 📡

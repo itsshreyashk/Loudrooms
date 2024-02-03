@@ -1,0 +1,14 @@
+.anim-1 {
+    animation: entry-1 0.2s;
+}
+.noscrollbar::-webkit-scrollbar {
+    display: none;
+}
+@keyframes entry-1 {
+    0% {
+        transform: scale(2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
